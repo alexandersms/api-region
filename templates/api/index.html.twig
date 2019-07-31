@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Régions de France
+{% endblock %}
+
+{% block body %}
+    <h1 class="h1 text-center mt-3 mb-3">Régions de France</h1>
+    <section class="container">
+        <article class="row">
+
+            {% for maRegion in lesRegions %}
+                <div class="col-md-3">
+                    <div class="card border-primary mb-3" style="max-width: 20rem;">
+                        <div class="card-header">{{maRegion.code}}</div>
+                        <div class="card-body">
+                            <h4 class="card-title">{{maRegion.nom}}</h4>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </article>
+    </section>
+{% endblock %}
