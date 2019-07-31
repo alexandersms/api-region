@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste de départements par région
+{% endblock %}
+
+{% block body %}
+    <section class="container mt-5">
+        <form action="" method="get">
+            <article class="row">
+                <div class="col-md-10">
+                    <div class="form-group">
+                        <select class="form-control" id="region" name="region">
+                            <option value="Toutes">Toutes les régions</option>
+                            {% for maRegion in lesRegions %}
+                                <option value="{{maRegion.code}}" {% if app.request.query.get("region") == maRegion.code %} selected {% endif %}>{{maRegion.nom}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="col">
+                    <button class="btn btn-primary" type="submit">Rechercher</button>
+                </div>
+            </article>
+        </form>
+        <h1 class="h1 text-center mt-3 mb-3">Liste des départements</h1>
+        <article class="row">
+            {% for monDpt in mesDpt %}
+                <div class="col-md-3">
+                    <div class="card border-primary mb-3" style="max-width: 20rem;">
+                        <div class="card-header">{{monDpt.code}}</div>
+                        <div class="card-body">
+                            <h4 class="card-title">{{monDpt.nom}}</h4>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </article>
+    </section>
+{% endblock %}
